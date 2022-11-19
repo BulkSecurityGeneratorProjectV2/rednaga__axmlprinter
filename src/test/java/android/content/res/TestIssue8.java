@@ -15,6 +15,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
+import java.nio.file.Files;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -101,7 +102,7 @@ public class TestIssue8 {
 
             underTest.injectApplicationAttribute(attribute);
 
-            File file = File.createTempFile("axml-func-test", "xml-test");
+            File file = Files.createTempFile("axml-func-test", "xml-test").toFile();
             file.deleteOnExit();
 
             underTest.write(new FileOutputStream(file));
